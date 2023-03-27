@@ -419,8 +419,8 @@ Rijeka,Croatia (Hrvatska),RJK,Eastern Europe
 Split,Croatia (Hrvatska),SPU,Eastern Europe
 Zadar,Croatia (Hrvatska),ZAD,Eastern Europe
 Zagreb,Croatia (Hrvatska),ZAG,Eastern Europe
-Tallinn - Pirita Harbour,Estonia,QUF,Eastern Europe
-Tallinn - Ulemiste,Estonia,TLL,Eastern Europe
+Tallinn,Estonia,QUF,Eastern Europe
+Tallinn,Estonia,TLL,Eastern Europe
 Tbilisi - Novo Alexeyevka,Georgia,TBS,Eastern Europe
 Riga,Latvia,RIX,Eastern Europe
 Vilnius,Lithuania,VNO,Eastern Europe
@@ -452,7 +452,7 @@ Kiev,Ukraine,IEV,Eastern Europe
 Nikolaev,Ukraine,NLV,Eastern Europe
 Odessa,Ukraine,ODS,Eastern Europe
 Simferopol,Ukraine,SIP,Eastern Europe
-Belgrad,Yugoslavia,BEG,Eastern Europe
+Belgrade,BEG,Eastern Europe
 Nis,Yugoslavia,INI,Eastern Europe
 Novi Sad,Yugoslavia,QND,Eastern Europe
 Podgorica,Yugoslavia,TGD,Eastern Europe
@@ -463,7 +463,7 @@ Innsbruck - Kranebitten,Austria,INN,Europe
 Salzburg - W.A. Mozart,Austria,SZG,Europe
 Vienna,Austria,VIE,Europe
 Copenhagen,Denmark,CPH,Europe
-Helsinki - Vantaa,Finland,HEL,Europe
+Helsinki,Finland,HEL,Europe
 Berlin,Germany,BER,Europe
 Berlin,Germany,SXF,Europe
 Berlin,Germany,TXL,Europe
@@ -485,7 +485,7 @@ Kerry County,Ireland,KIR,Europe
 Knock,Ireland,NOC,Europe
 Shannon (Limerick),Ireland,SNN,Europe
 Cagliari,Italy,CAG,Europe
-valetta,Malta,MLA,Europe
+valetta,MLA,Europe
 Bergen,Norway,BGO,Europe
 Oslo,Norway,OSL,Europe
 Oslo,Norway,TRF,Europe
