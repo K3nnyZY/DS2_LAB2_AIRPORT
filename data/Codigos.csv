@@ -517,7 +517,7 @@ Larnaca,Cyprus,LCA,Europe
 Limassol,Cyprus,QLI,Europe
 Nicosia,Cyprus,NIC,Europe
 Paphos,Cyprus,PFO,Europe
-Prague - Ruzyne,Czech Republic,PRG,Europe
+Prague,Czech Republic,PRG,Europe
 Aarhus,Denmark,AAR,Europe
 Alborg,Denmark,AAL,Europe
 Billund,Denmark,BLL,Europe
@@ -584,9 +584,9 @@ Nantes,France,NTE,Europe
 Nice - Cote D'Azur,France,NCE,Europe
 Nimes,France,FNI,Europe
 Paris,France,PAR,Europe
-Paris - Charles de Gaulle,France,CDG,Europe
-Paris - Le Bourget,France,LBG,Europe
-Paris - Orly,France,ORY,Europe
+Paris,France,CDG,Europe
+Paris,France,LBG,Europe
+Paris,France,ORY,Europe
 Pau,France,PUF,Europe
 Perpignan,France,PGF,Europe
 Quimper,France,UIP,Europe
@@ -723,7 +723,7 @@ Granada,Spain,GRX,Europe
 Jerez de la Frontera/Cadiz,Spain,XRY,Europe
 La Coruna,Spain,LCG,Europe
 Las Palmas,Spain,LPA,Europe
-Madrid - Barajas,Spain,MAD,Europe
+Madrid,Spain,MAD,Europe
 Mahon,Spain,MAH,Europe
 Malaga,Spain,AGP,Europe
 Murcia,Spain,MJV,Europe
