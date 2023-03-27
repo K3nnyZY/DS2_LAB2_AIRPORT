@@ -136,7 +136,7 @@ Alexander Bay,South Africa,ALJ,Africa
 Alldays,South Africa,ADY,Africa
 Bloemfontein,South Africa,BFN,Africa
 Durban,South Africa,DUR,Africa
-East London,South Africa,ELS,Africa
+London,South Africa,ELS,Africa
 Ellisras,South Africa,ELL,Africa
 George,South Africa,GRJ,Africa
 Kimberley,South Africa,KIM,Africa
@@ -392,17 +392,17 @@ Belize City,Belize,BZE,Central America
 Guatemala City,Guatemala,GUA,Central America
 Managua - Augusto C Sandino,Nicaragua,MGA,Central Americal
 Sarajevo,Bosnia and Herzegovina,SJJ,Eastern Europe
-Sofia - Vrazhdebna,Bulgaria,SOF,Eastern Europe
+Sofia,Bulgaria,SOF,Eastern Europe
 Nadi,Fiji,NAN,South Pacific
 Suva/Nausori,Fiji,SUV,South Pacific
 Nausori,Fiji/Suva,SUV,South Pacific
-"Budapest, Ferihegy",Hungary,BUD,Eastern Europe
+Budapest,Hungary,BUD,Eastern Europe
 Skopje,Macedonia,SKP,Eastern Europe
 Bucharest,Romania,BUH,Eastern Europe
-"Bucharest, Otopeni",Romania,OTP,Eastern Europe
+Bucharest,Romania,OTP,Eastern Europe
 "Eriwan (Yerevan, Jerevan)",Armenia,EVN,Eastern Europe
 Baku,Azerbaijan,BAK,Eastern Europe
-"Minsk, International",Belarus,MSQ,Eastern Europe
+Minsk,Belarus,MSQ,Eastern Europe
 Mostar,Bosnia and Herzegovina,OMO,Eastern Europe
 Bourgas/Burgas,Bulgaria,BOJ,Eastern Europe
 Gorna,Bulgaria,GOZ,Eastern Europe
@@ -418,12 +418,12 @@ Pula,Croatia (Hrvatska),PUY,Eastern Europe
 Rijeka,Croatia (Hrvatska),RJK,Eastern Europe
 Split,Croatia (Hrvatska),SPU,Eastern Europe
 Zadar,Croatia (Hrvatska),ZAD,Eastern Europe
-Zagreb - Pleso,Croatia (Hrvatska),ZAG,Eastern Europe
+Zagreb,Croatia (Hrvatska),ZAG,Eastern Europe
 Tallinn - Pirita Harbour,Estonia,QUF,Eastern Europe
 Tallinn - Ulemiste,Estonia,TLL,Eastern Europe
 Tbilisi - Novo Alexeyevka,Georgia,TBS,Eastern Europe
 Riga,Latvia,RIX,Eastern Europe
-Wilna (Vilnius),Lithuania,VNO,Eastern Europe
+Vilnius,Lithuania,VNO,Eastern Europe
 Ohrid,Macedonia,OHD,Eastern Europe
 Constanza,Romania,CND,Eastern Europe
 Adler/Sochi,Russia,AER,Eastern Europe
@@ -432,10 +432,10 @@ Chita (Tschita),Russia,HTA,Eastern Europe
 Irkutsk,Russia,IKT,Eastern Europe
 Kazan (Ka San),Russia,KZN,Eastern Europe
 Mineralnye Vody,Russia,MRV,Eastern Europe
-Moscow - Metropolitan Area,Russia,MOW,Eastern Europe
-Moscow - Domodedovo,Russia,DME,Eastern Europe
-Moscow - Sheremetyevo,Russia,SVO,Eastern Europe
-Moscow - Vnukovo,Russia,VKO,Eastern Europe
+Moscow,Russia,MOW,Eastern Europe
+Moscow,Russia,DME,Eastern Europe
+Moscow,Russia,SVO,Eastern Europe
+Moscow,VKO,Eastern Europe
 Murmansk,Russia,MMK,Eastern Europe
 Novosibirsk - Tolmachevo,Russia,OVB,Eastern Europe
 St. Petersburg (Leningrad) - Pulkovo,Russia,LED,Eastern Europe
@@ -444,33 +444,33 @@ Velikiye Luki (Welikije Luki),Russia,VLU,Eastern Europe
 Arkhangelsk,Russian Federation,ARH,Eastern Europe
 Yakutsk,Russian Federation,YKS,Eastern Europe
 Bratislava,Slovakia,BTS,Eastern Europe
-Ljubljana - Brnik,Slovenia,LJU,Eastern Europe
+Ljubljana,Slovenia,LJU,Eastern Europe
 Maribor,Slovenia,MBX,Eastern Europe
-Kiev - Borispol,Ukraine,KBP,Eastern Europe
-Kiev - Zhulhany,Ukraine,IEV,Eastern Europe
+Kiev,Ukraine,KBP,Eastern Europe
+Kiev,Ukraine,IEV,Eastern Europe
 "Lvov (Lwow, Lemberg)",Ukraine,LWO,Eastern Europe
 Nikolaev,Ukraine,NLV,Eastern Europe
 Odessa,Ukraine,ODS,Eastern Europe
 Simferopol,Ukraine,SIP,Eastern Europe
-Belgrad (Beograd),Yugoslavia,BEG,Eastern Europe
+Belgrad,Yugoslavia,BEG,Eastern Europe
 Nis,Yugoslavia,INI,Eastern Europe
 Novi Sad,Yugoslavia,QND,Eastern Europe
 Podgorica,Yugoslavia,TGD,Eastern Europe
 Pristina,Yugoslavia,PRN,Eastern Europe
 Tivat,Yugoslavia,TIV,Eastern Europe
-Tirana - Rinas,Albania,TIA,Eastern Europe
+Tirana,Albania,TIA,Eastern Europe
 Innsbruck - Kranebitten,Austria,INN,Europe
 Salzburg - W.A. Mozart,Austria,SZG,Europe
-Wien (Vienna) - Vienna Int'l,Austria,VIE,Europe
+Vienna,Austria,VIE,Europe
 Copenhagen,Denmark,CPH,Europe
 Helsinki - Vantaa,Finland,HEL,Europe
 Berlin,Germany,BER,Europe
-"Berlin, Schoenefeld",Germany,SXF,Europe
-"Berlin, Tegel",Germany,TXL,Europe
+Berlin, Schoenefeld",Germany,SXF,Europe
+Berlin, Tegel",Germany,TXL,Europe
 Dresden,Germany,DRS,Europe
 Hamburg - Fuhlsbuettel,Germany,HAM,Europe
 Athens,Greece,ATH,Europe
-"Athens, Hellinikon Airport",Greece,HEW,Europe
+Athens,Greece,HEW,Europe
 Corfu,Greece,CFU,Europe
 Kos,Greece,KGS,Europe
 Mykonos,Greece,JMK,Europe
@@ -485,10 +485,10 @@ Kerry County,Ireland,KIR,Europe
 Knock,Ireland,NOC,Europe
 Shannon (Limerick),Ireland,SNN,Europe
 Cagliari,Italy,CAG,Europe
-Luga,Malta,MLA,Europe
+valetta,Malta,MLA,Europe
 Bergen,Norway,BGO,Europe
 Oslo,Norway,OSL,Europe
-Oslo - Sandefjord,Norway,TRF,Europe
+Oslo,Norway,TRF,Europe
 Krakau,Poland,KRK,Europe
 Warsaw,Poland,WAW,Europe
 Lisbon - Lisboa,Portugal,LIS,Europe
@@ -497,15 +497,15 @@ Palma de Mallorca,Spain,PMI,Europe
 Sevilla,Spain,SVQ,Europe
 Valencia,Spain,VLC,Europe
 Goteborg,Sweden,GOT,Europe
-Stockholm Metropolitan Area,Sweden,STO,Europe
-Stockholm - Arlanda,Sweden,ARN,Europe
-Stockholm - Bromma,Sweden,BMA,Europe
+Stockholm,Sweden,STO,Europe
+Stockholm,Sweden,ARN,Europe
+Stockholm,Sweden,BMA,Europe
 Belfast - Harbour,United Kingdom,BHD,Europe
 Belfast International,United Kingdom,BFS,Europe
 "Glasgow, Prestwick",United Kingdom,PIK,Europe
 Glasgow,United Kingdom,GLA,Europe
 Inverness,United Kingdom,INV,Europe
-Andorra La Vella H/P,Andorra,ALV,Europe
+Andorra,Andorra,ALV,Europe
 Graz,Austria,GRZ,Europe
 Klagenfurt,Austria,KLU,Europe
 Linz - Hoersching,Austria,LNZ,Europe
@@ -638,8 +638,8 @@ Thira,Greece,JTR,Europe
 Zakynthos,Greece,ZTH,Europe
 Christmas Line,Iceland,CXI,Europe
 Egilsstadir,Iceland,EGS,Europe
-Reykjavik - Metropolitan Area,Iceland,REK,Europe
-Reykjavik - Keflavik International,Iceland,KEF,Europe
+Reykjavik,Iceland,REK,Europe
+Reykjavik,Iceland,KEF,Europe
 Sligo,Ireland,SXL,Europe
 Alghero Sassari,Italy,AHO,Europe
 Ancona,Italy,AOI,Europe
@@ -667,8 +667,8 @@ Pisa - Gal Galilei,Italy,PSA,Europe
 Reggio Calabria,Italy,REG,Europe
 Rimini,Italy,RMI,Europe
 Rome,Italy,ROM,Europe
-Rome - Ciampino,Italy,CIA,Europe
-Rome - Fuimicino,Italy,FCO,Europe
+Rome,Italy,CIA,Europe
+Rome,Italy,FCO,Europe
 Trapani,Italy,TPS,Europe
 Treviso,Italy,TSF,Europe
 Trieste,Italy,TRS,Europe
@@ -677,7 +677,7 @@ Venice - Marco Polo,Italy,VCE,Europe
 Verona (Brescia) Montichiari,Italy,VBS,Europe
 Verona,Italy,VRN,Europe
 Luxembourg,Luxembourg,LUX,Europe
-"Amsterdam, Schiphol",Netherlands,AMS,Europe
+Amsterdam,Netherlands,AMS,Europe
 Den Haag (The Hague),Netherlands,HAG,Europe
 Eindhoven,Netherlands,EIN,Europe
 Lelystad,Netherlands,LEY,Europe
@@ -734,7 +734,7 @@ Santa Cruz de la Palma,Spain,SPC,Europe
 Santander,Spain,SDR,Europe
 Santiago de Compostela,Spain,SCQ,Europe
 Tenerife,Spain,TCI,Europe
-Tenerife - Sur Reina Sofia,Spain,TFS,Europe
+Sofia,Spain,TFS,Europe
 Tenerife - Norte Los Rodeos,Spain,TFN,Europe
 Valladolid,Spain,VLL,Europe
 Valverde,Spain,VDE,Europe
@@ -768,7 +768,7 @@ Lugano,Switzerland,LUG,Europe
 Zurich (Zürich) - Kloten,Switzerland,ZRH,Europe
 Basel/Mulhouse,Switzerland/France,EAP,Europe
 Los Rodeos,Teneriffa/Spain,TFN,Europe
-Reina Sofia,Teneriffa/Spain,TFS,Europe
+Sofia,Teneriffa/Spain,TFS,Europe
 "Sheffield, City Airport",UK,SZD,Europe
 Aberdeen,United Kingdom,ABZ,Europe
 Birmingham,United Kingdom,BHX,Europe
@@ -776,7 +776,7 @@ Bristol,United Kingdom,BRS,Europe
 Cambrigde,United Kingdom,CBG,Europe
 Cardiff,United Kingdom,CWL,Europe
 Derby (East Midlands),United Kingdom,EMA,Europe
-Derry (Londonderry),United Kingdom,LDY,Europe
+London,United Kingdom,LDY,Europe
 Edinburgh,United Kingdom,EDI,Europe
 Guernsey,United Kingdom,GCI,Europe
 Humberside,United Kingdom,HUY,Europe
@@ -785,17 +785,17 @@ Jersey,United Kingdom,JER,Europe
 Leeds/Bradford,United Kingdom,LBA,Europe
 Liverpool,United Kingdom,LPL,Europe
 London,United Kingdom,LON,Europe
-London - City Airport,United Kingdom,LCY,Europe
-London - Gatwick,United Kingdom,LGW,Europe
-London - Heathrow,United Kingdom,LHR,Europe
-London - Luton,United Kingdom,LTN,Europe
-London - Stansted,United Kingdom,STN,Europe
+London,United Kingdom,LCY,Europe
+London,United Kingdom,LGW,Europe
+London,United Kingdom,LHR,Europe
+London,United Kingdom,LTN,Europe
+London,United Kingdom,STN,Europe
 Manchester,United Kingdom,MAN,Europe
 Newcastle,United Kingdom,NCL,Europe
 Orkney,United Kingdom,KOI,Europe
 Southampton - Eastleigh,United Kingdom,SOU,Europe
 Southend,United Kingdom,SEN,Europe
-Stansted (London),United Kingdom,STN,Europe
+London,United Kingdom,STN,Europe
 Stornway,United Kingdom,SYY,Europe
 Sumburgh (Shetland),United Kingdom,LSI,Europe
 "Teesside, Durham Tees Valley",United Kingdom,MME,Europe
@@ -1023,8 +1023,8 @@ Zacatecas,Mexico,ZCL,North America
 "Appelton/Neenah/Menasha, WI",USA,ATW,North America
 "Asheville, NC",USA,AVL,North America
 "Aspen Snowmass, CO",USA,ASE,North America
-"Athens, GA",USA,AHN,North America
-"Athens, OH",USA,ATO,North America
+Athens, GA",USA,AHN,North America
+Athens, OH",USA,ATO,North America
 "Atlanta, Hartsfield Atlanta Int'l Airport",USA,ATL,North America
 "Atlantic City, NJ",USA,ACY,North America
 "Augusta, GA",USA,AGS,North America
@@ -1289,7 +1289,7 @@ Baltimore Washington Int'l Airport; MD,USA,BWI,North America
 "Nantucket, MA",USA,ACK,North America
 "Naples, FL",USA,APF,North America
 "Nashville, TN",USA,BNA,North America
-"New Bern, NC",USA,EWN,North America
+Bern, NC",USA,EWN,North America
 "New Haven, CT",USA,HVN,North America
 "New Orleans, La",USA,MSY,North America
 "New York - John F. Kennedy, NY",USA,JFK,North America
