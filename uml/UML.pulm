@@ -1,0 +1,24 @@
+@startuml
+class Capital_Node {
+    - capital: str
+    - connections: list[Capital_Node]
+    - cost: list[float]
+    - pos: int
+    - lat: float
+    - long: float
+}
+
+class Graph {
+    - vertex_list: list[Capital_Node]
+    - country_list: list[str]
+    - dis_matrix: list[list[float]]
+    - pat_matrix: list[list[Capital_Node]]
+    + distance_matrix()
+    + path_matrix()
+    + Floyd_Warshall()
+    + short_path_list(start: str, end: str)
+}
+
+Capital_Node "1" -- "n" Capital_Node
+Graph "1" -- "n" Capital_Node
+@enduml
