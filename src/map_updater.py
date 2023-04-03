@@ -89,7 +89,7 @@ class MapUpdater:
             return
 
         vuelos = pd.read_csv('data/data.csv')
-        map = folium.Map(location=[4.570868, -74.297333], zoom_start=6)
+        map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
 
         for _, location_info in vuelos.iterrows():
             if location_info["Origin"] == start:
@@ -116,6 +116,6 @@ class MapUpdater:
                     weight = node1.cost[node1.connections.index(node2)]
                     self.add_polyline(map, node1, node2, "blue", 3, str(weight))
 
-        directory = r"app/static"
+        directory = r"src/static"
         Save = os.path.join(directory, "map.html")
         map.save(Save)

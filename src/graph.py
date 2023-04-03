@@ -101,4 +101,3 @@ class Graph:
                     res += f"\t{connection.capital}, costo: {vertex.cost[i]} km\n"
                     printed_connections.add(connection.capital)
         return res
-
