@@ -53,7 +53,7 @@ class MapUpdater:
         ).add_to(map)
 
 
-    def add_polyline(self, map, node1:Capital_Node, node2:Capital_Node, color, weight, tooltip):
+    def add_polyline(self, map:folium, node1:Capital_Node, node2:Capital_Node, color:folium, weight:folium, tooltip):
         """
         Método que agrega una línea al mapa de Folium.
 
@@ -72,6 +72,7 @@ class MapUpdater:
             tooltip=tooltip,
         ).add_to(map)
 
+ 
     def update_map(self, start: str, finish: str):
         """
         Método que actualiza el mapa de Folium con los marcadores y líneas correspondientes.
@@ -79,7 +80,7 @@ class MapUpdater:
         Args:
         - start: str que indica la capital de la ciudad de origen de los vuelos a representar en el mapa.
         - finish: str que indica la capital de la ciudad de destino de los vuelos a representar en el mapa,
-          o la cadena "TODOS" para representar todos los vuelos que parten de la ciudad de origen.
+        o la cadena "TODOS" para representar todos los vuelos que parten de la ciudad de origen.
         """
         if start == finish or not start or not finish:
             return
@@ -101,27 +102,20 @@ class MapUpdater:
         if finish == "TODOS":
             for node in self.grafo.vertex_list:
                 if node.capital != start:
-                    try:
-                        path_list = self.grafo.short_path_list(start, node.capital)
-                    except ValueError:
-                        continue
+                    path_list = self.grafo.dijkstra_shortest_path(start, node.capital)
                     for i in range(len(path_list) - 1):
                         node1, node2 = path_list[i], path_list[i+1]
                         if node2 in node1.connections:
                             weight = node1.cost[node1.connections.index(node2)]
                             self.add_polyline(map, node1, node2, "blue", 3, str(weight))
         else:
-            try:
-                path_list = self.grafo.short_path_list(start, finish)
-            except ValueError:
-                return
+            path_list = self.grafo.dijkstra_shortest_path(start, finish)
             for i in range(len(path_list) - 1):
                 node1, node2 = path_list[i], path_list[i+1]
                 if node2 in node1.connections:
                     weight = node1.cost[node1.connections.index(node2)]
                     self.add_polyline(map, node1, node2, "blue", 3, str(weight))
 
-        directory = r"src/static"
+        directory = r"app/static"
         Save = os.path.join(directory, "map.html")
         map.save(Save)
-

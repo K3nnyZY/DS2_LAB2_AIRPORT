@@ -1,115 +1,94 @@
 from node import Capital_Node
-import heapq
+from typing import List, Dict
 
 class Graph:
     """
-    Clase que representa un grafo dirigido ponderado. Utiliza la implementación del algoritmo de Floyd-Warshall para
+    Clase que representa un grafo dirigido ponderado. Utiliza la implementación del algoritmo de Dijkstra para
     encontrar los caminos más cortos entre nodos.
     """
-
 
     def __init__(self):
         """
         Inicializa un nuevo grafo vacío.
         """
-        self.vertex_list: list[Capital_Node] = []  # Lista de nodos del grafo
-        self.country_list: list[str] = []  # Lista de nombres de los países correspondientes a cada nodo
-        self.dis_matrix = []  # Matriz de distancias entre nodos
-        self.pat_matrix = []  # Matriz de recorridos entre nodos
+        self.vertex_list: List[Capital_Node] = []  # Lista de nodos del grafo
+        self.country_list: List[str] = []  # Lista de nombres de los países correspondientes a cada nodo
 
 
-    def distance_matrix(self):
+    def dijkstra_shortest_path(self, start: str, finish: str) -> List[Capital_Node]:
         """
-        Crea la matriz de distancias entre nodos.
-
-        Returns:
-            La matriz de distancias entre nodos.
-        """
-        length = len(self.vertex_list)
-        matrix = [[float('inf')] * length for _ in range(length)]
-
-        for i in range(length):
-            matrix[i][i] = 0
-
-        for vertex in self.vertex_list:
-            for idx, connection in enumerate(vertex.connections):
-                matrix[vertex.pos][connection.pos] = vertex.cost[idx]
-
-        return matrix
-
-
-    def path_matrix(self):
-        """
-        Crea la matriz de recorridos entre nodos.
-
-        Returns:
-            La matriz de recorridos entre nodos.
-        """
-        length = len(self.vertex_list)
-        matrix = [[0] * length for _ in range(length)]
-
-        for vertex in self.vertex_list:
-            for i in range(length):
-                matrix[i][vertex.pos] = vertex
-
-        return matrix
-
-
-    def Prim(self, start: str):
-        """
-        Encuentra el árbol de expansión mínimo usando el algoritmo de Prim.
+        Método que calcula la ruta más corta entre dos nodos utilizando el algoritmo de Dijkstra.
 
         Args:
-            start: El nombre del país del nodo inicial.
-        """
-        visited = set()
-        start_node = self.vertex_list[self.country_list.index(start)]
-        edges = [(0, start_node, None)]
-
-        while edges:
-            cost, current_node, prev_node = heapq.heappop(edges)
-
-            if current_node not in visited:
-                visited.add(current_node)
-                if prev_node:
-                    # Aquí se puede guardar información sobre la conexión en el árbol de expansión mínimo
-                    # Por ejemplo, podría agregar la conexión a una lista de conexiones en el árbol de expansión mínimo
-                    pass
-
-                for idx, connection in enumerate(current_node.connections):
-                    if connection not in visited:
-                        heapq.heappush(edges, (current_node.cost[idx], connection, current_node))
-
-
-    def short_path_list(self, start: str, end: str):
-        """
-        Encuentra el camino más corto entre dos nodos.
-
-        Args:
-            start: El nombre del país del nodo de inicio.
-            end: El nombre del país del nodo de destino.
+        - start: str que indica la capital de la ciudad de origen.
+        - finish: str que indica la capital de la ciudad de destino.
 
         Returns:
-            La lista de nodos que forman el camino más corto entre el nodo de inicio y el nodo de destino.
+        - Una lista de objetos Capital_Node que representa la ruta más corta entre el nodo de origen y el nodo de destino.
         """
-        start_node = self.vertex_list[self.country_list.index(start)]
-        end_node = self.vertex_list[self.country_list.index(end)]
-        path_list = [start_node]
-        if end_node in start_node.connections and self.pat_matrix[start_node.pos][end_node.pos] == end_node:
-            path_list.append(end_node)
-        else:
-            aux = end_node
-            path = []
-            while aux not in start_node.connections:
-                aux = self.pat_matrix[start_node.pos][aux.pos]
-                path.append(aux)
-            path.reverse()
-            for node in path:
-                path_list.append(node)
-            path_list.append(end_node)
+        unvisited_nodes = list(self.vertex_list)
+        shortest_path: Dict[Capital_Node, float] = {node: float('inf') for node in unvisited_nodes}
+        previous_nodes: Dict[Capital_Node, Capital_Node] = {}
 
-        return path_list
+        shortest_path[self.get_vertex(start)] = 0
 
+        while unvisited_nodes:
+            current_min_node = min(unvisited_nodes, key=lambda node: shortest_path[node])
+            neighbors = current_min_node.connections
+
+            for neighbor in neighbors:
+                tentative_cost = shortest_path[current_min_node] + current_min_node.cost[current_min_node.connections.index(neighbor)]
+                if tentative_cost < shortest_path[neighbor]:
+                    shortest_path[neighbor] = tentative_cost
+                    previous_nodes[neighbor] = current_min_node
+
+            unvisited_nodes.remove(current_min_node)
+            if current_min_node == self.get_vertex(finish):
+                break
+
+        return self._reconstruct_path(previous_nodes, start, finish)
+
+
+    def get_vertex(self, capital: str) -> Capital_Node:
+        """
+        Método que devuelve el objeto Capital_Node correspondiente a la capital dada.
+
+        Args:
+        - capital: str que indica la capital de la ciudad.
+
+        Returns:
+        - Un objeto Capital_Node correspondiente a la capital dada.
+        """
+        for node in self.vertex_list:
+            if node.capital == capital:
+                return node
+        return None
+
+
+    def _reconstruct_path(self, previous_nodes: Dict[Capital_Node, Capital_Node], start: str, finish: str) -> List[Capital_Node]:
+        """
+        Método auxiliar para reconstruir la ruta más corta a partir de los nodos previos.
+
+        Args:
+        - previous_nodes: Diccionario que contiene los nodos previos en la ruta.
+        - start: str que indica la capital de la ciudad de origen.
+        - finish: str que indica la capital de la ciudad de destino.
+
+        Returns:
+        - Una lista de objetos Capital_Node que representa la ruta más corta entre el nodo de origen y el nodo de destino.
+        """
+        shortest_path_list = []
+        current_node = self.get_vertex(finish)
+        while current_node != self.get_vertex(start):
+            try:
+                shortest_path_list.insert(0, current_node)
+                current_node = previous_nodes[current_node]
+            except KeyError:
+                return []
+        shortest_path_list.insert(0, self.get_vertex(start))
+
+        return shortest_path_list
+    
 
     def __str__(self):
         res = ""
@@ -122,3 +101,4 @@ class Graph:
                     res += f"\t{connection.capital}, costo: {vertex.cost[i]} km\n"
                     printed_connections.add(connection.capital)
         return res
+

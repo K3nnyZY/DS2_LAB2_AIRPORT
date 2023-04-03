@@ -38,6 +38,6 @@ Save = os.path.join(directory, "map.html")
 map.save(Save)
 
 
-grafo.Floyd_Warshall()
+grafo.dijkstra_shortest_path("LONDON", "PARIS")
 
 print(grafo)
