@@ -1,10 +1,13 @@
+from flask import Flask, render_template, request
 from graph import Graph
 from node import Capital_Node
+import folium
 import pandas as pd
+import os
 
 grafo = Graph()
 
-data = pd.read_csv("data\data.csv")
+data = pd.read_csv("data/data.csv")
 
 capitals = data.groupby('Origin').first().reset_index()
 
@@ -24,6 +27,15 @@ for index, info in data.iterrows():
     ciudad_des = grafo.vertex_list[indexdes]
     ciudad_or.connections.append(ciudad_des)
     ciudad_or.cost.append(round(info["distance"]))
+
+map = folium.Map(location=[4.570868,-74.297333],zoom_start=6)
+for index, location_info in data.iterrows():
+    folium.Marker([location_info["lat_st"], location_info["lng_st"]], popup=location_info["Origin"], icon=folium.Icon(color="pink", icon="plane")).add_to(map)
+
+# Guardamos el mapa en la carpeta requerida
+directory = r"src/static"
+Save = os.path.join(directory, "map.html")
+map.save(Save)
 
 
 grafo.Floyd_Warshall()
