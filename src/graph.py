@@ -1,5 +1,5 @@
 from node import Capital_Node
-
+import heapq
 
 class Graph:
     """
@@ -55,27 +55,30 @@ class Graph:
         return matrix
 
 
-    def Floyd_Warshall(self):
+    def Prim(self, start: str):
         """
-        Encuentra los caminos más cortos entre todos los pares de nodos utilizando el algoritmo de Floyd-Warshall.
+        Encuentra el árbol de expansión mínimo usando el algoritmo de Prim.
+
+        Args:
+            start: El nombre del país del nodo inicial.
         """
-        # Si la matriz de distancia no ha sido creada, la creamos
-        if not self.dis_matrix:
-            self.dis_matrix = self.distance_matrix()
+        visited = set()
+        start_node = self.vertex_list[self.country_list.index(start)]
+        edges = [(0, start_node, None)]
 
-        # Si la matriz de recorrido no ha sido creada, la creamos
-        if not self.pat_matrix:
-            self.pat_matrix = self.path_matrix()
+        while edges:
+            cost, current_node, prev_node = heapq.heappop(edges)
 
-        n = len(self.vertex_list)
+            if current_node not in visited:
+                visited.add(current_node)
+                if prev_node:
+                    # Aquí se puede guardar información sobre la conexión en el árbol de expansión mínimo
+                    # Por ejemplo, podría agregar la conexión a una lista de conexiones en el árbol de expansión mínimo
+                    pass
 
-        for k in range(n):
-            for i in range(n):
-                for j in range(n):
-                    temp = self.dis_matrix[i][k] + self.dis_matrix[k][j]
-                    if temp < self.dis_matrix[i][j]:
-                        self.dis_matrix[i][j] = temp
-                        self.pat_matrix[i][j] = self.vertex_list[k]
+                for idx, connection in enumerate(current_node.connections):
+                    if connection not in visited:
+                        heapq.heappush(edges, (current_node.cost[idx], connection, current_node))
 
 
     def short_path_list(self, start: str, end: str):
