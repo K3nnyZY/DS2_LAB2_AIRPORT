@@ -1,24 +1,29 @@
 @startuml
 class Capital_Node {
-    - capital: str
-    - connections: list[Capital_Node]
-    - cost: list[float]
-    - pos: int
-    - lat: float
-    - long: float
+    -capital: str
+    -connections: List[Capital_Node]
+    -cost: List[float]
+    -pos: int
+    -lat: float
+    -long: float
 }
 
 class Graph {
-    - vertex_list: list[Capital_Node]
-    - country_list: list[str]
-    - dis_matrix: list[list[float]]
-    - pat_matrix: list[list[Capital_Node]]
-    + distance_matrix()
-    + path_matrix()
-    + Floyd_Warshall()
-    + short_path_list(start: str, end: str)
+    -vertex_list: List[Capital_Node]
+    -country_list: List[str]
+    +dijkstra_shortest_path(start: str, finish: str): List[Capital_Node]
+    +get_vertex(capital: str): Capital_Node
+    -_reconstruct_path(previous_nodes: Dict[Capital_Node, Capital_Node], start: str, finish: str): List[Capital_Node]
 }
 
-Capital_Node "1" -- "n" Capital_Node
-Graph "1" -- "n" Capital_Node
+class MapUpdater {
+    -grafo: Graph
+    +node_exists(node_data: str): bool
+    +add_marker(map: folium.Map, location_info: dict, color: str, icon: str): None
+    +add_polyline(map: folium.Map, node1: Capital_Node, node2: Capital_Node, color: str, weight: int, tooltip: str): None
+    +update_map(start: str, finish: str): None
+}
+
+Capital_Node "1" -- "0..*" Graph: contains
+Graph "1" -- "1" MapUpdater: updates
 @enduml

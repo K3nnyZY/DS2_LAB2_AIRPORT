@@ -10,10 +10,10 @@ grafo = Graph()
 vuelos = pd.read_csv('data/data.csv')
 
 
-cities = vuelos.groupby('Origin').first().reset_index()
+capitals = vuelos.groupby('Origin').first().reset_index()
 
 
-for index, capital in cities.iterrows():
+for index, capital in capitals.iterrows():
     node = Capital_Node(capital['Origin'])
     node.pos = index
     node.lat = capital['lat_st']
@@ -25,15 +25,16 @@ for index, capital in cities.iterrows():
 for index, info in vuelos.iterrows():
     indexor = grafo.country_list.index(info["Origin"])
     indexdes = grafo.country_list.index(info["Destination"])
-    ciudad_or = grafo.vertex_list[indexor]
-    ciudad_des = grafo.vertex_list[indexdes]
-    ciudad_or.connections.append(ciudad_des)
-    ciudad_or.cost.append(round(info["distance"]))
+    origins = grafo.vertex_list[indexor]
+    destinations = grafo.vertex_list[indexdes]
+    origins.connections.append(destinations)
+    origins.cost.append(round(info["distance"]))
 
 
 map = folium.Map(location=[54.5260, 15.2551],zoom_start=4)
 for index, location_info in vuelos.iterrows():
-    folium.Marker([location_info["lat_st"], location_info["lng_st"]], popup=location_info["Origin"], icon=folium.Icon(color="pink", icon="plane")).add_to(map)
+    folium.Marker([location_info["lat_st"], location_info["lng_st"]], popup=location_info["Origin"], 
+                  icon=folium.Icon(color="orange", icon="plane")).add_to(map)
 
 grafo.dijkstra_shortest_path("LONDON","PARIS")
 print(grafo)
@@ -63,5 +64,5 @@ def ciudades():
     # Refrescar la pagina
     return render_template('index.html')
 if __name__ == '__main__':
-    webbrowser.open("http://127.0.0.1:5000", 1)
-    app.run(debug=True)
+    webbrowser.open("http://127.0.0.1:5000", 0)
+    app.run(debug=False)

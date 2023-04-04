@@ -92,12 +92,15 @@ class MapUpdater:
         map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
 
         for _, location_info in vuelos.iterrows():
+            self.add_marker(map, location_info, "orange", "plane")
             if location_info["Origin"] == start:
-                self.add_marker(map, location_info, "lightred", "plane")
+                self.add_marker(map, location_info, "green", "plane")
+            elif finish == "TODOS":
+                self.add_marker(map, location_info, "red", "plane")
             elif location_info["Origin"] == finish:
-                self.add_marker(map, location_info, "lightgreen", "plane")
+                self.add_marker(map, location_info, "red", "plane")
             else:
-                self.add_marker(map, location_info, "pink", "plane")
+                self.add_marker(map, location_info, "orange", "plane")
 
         if finish == "TODOS":
             for node in self.grafo.vertex_list:
