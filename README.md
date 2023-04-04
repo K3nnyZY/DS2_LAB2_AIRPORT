@@ -1,5 +1,5 @@
 # Vuelos Capitales Europeas
-
+<img src = "src/static/images/fondo.jpg">
 
 ## Integrantes
 - Kenny Zhu
@@ -12,7 +12,14 @@ del continente europeo, donde dada una distribución de vuelos (al menos lugar d
 y la distancia que hay entre ellos encontrar el camino de menor costo (distancia entre ellos) para 
 que el usuario pueda llegar:
 - A todos los lugares desde un punto inicial.
-- A un destino en específico. 
+- A un destino en específico.
+
+## Contenido
+- Carpeta data: Aqui se encuentra los datos del programa es decir los csv de los capitales, aeropuertos, etc,
+y tiene una implementacion de como se creo el csv que se utlizo en el archivo data.ipynb
+- Carpeta src: En esta carpeta se encontrara toda la implementacion del software, Back-end y Fornt-end, como las clases, 
+los metodos, los html, el codigo para correr el programa, etc.
+- Carpeta uml: Implementacion del diagrama UML
 
 ## Funcionalidad
 este software el cliente puede:

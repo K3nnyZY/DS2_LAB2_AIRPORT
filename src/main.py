@@ -36,9 +36,6 @@ for index, location_info in vuelos.iterrows():
     folium.Marker([location_info["lat_st"], location_info["lng_st"]], popup=location_info["Origin"], 
                   icon=folium.Icon(color="orange", icon="plane")).add_to(map)
 
-grafo.dijkstra_shortest_path("LONDON","PARIS")
-print(grafo)
-
 # Guardamos el mapa en la carpeta requerida
 directory = r"src/static"
 Save = os.path.join(directory, "map.html")
@@ -48,11 +45,11 @@ app = Flask(__name__)
 @app.route('/') 
 #Primera ejecución
 def index():
-    return render_template('pp.html')
+    return render_template('Inicio.html')
 #Para pasar a la página de los mapas
 @app.route('/continuar', methods=["GET", "POST"])
 def continuar():
-    return render_template('index.html')
+    return render_template('App.html')
 @app.route('/datos', methods=["GET", "POST"])
 #Recolectar los datos
 def ciudades():
@@ -62,7 +59,7 @@ def ciudades():
     map_updater = MapUpdater(grafo)
     map_updater.update_map(ciudad1, ciudad2)
     # Refrescar la pagina
-    return render_template('index.html')
+    return render_template('App.html')
 if __name__ == '__main__':
     webbrowser.open("http://127.0.0.1:5000", 0)
     app.run(debug=False)
