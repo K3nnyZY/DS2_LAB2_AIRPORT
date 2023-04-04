@@ -69,7 +69,7 @@ class MapUpdater:
             [(node1.lat, node1.long), (node2.lat, node2.long)],
             color=color,    
             weight=weight,
-            tooltip=tooltip,
+            tooltip=f"{tooltip} km",
         ).add_to(map)
 
  
