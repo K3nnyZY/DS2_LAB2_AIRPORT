@@ -17,14 +17,14 @@ que el usuario pueda llegar:
 ## Contenido
 - Carpeta data: Aqui se encuentra los datos del programa es decir los csv de los capitales, aeropuertos, etc,
 y tiene una implementacion de como se creo el csv que se utlizo en el archivo data.ipynb
-- Carpeta src: En esta carpeta se encontrara toda la implementacion del software, Back-end y Fornt-end, como las clases, 
+- Carpeta src: En esta carpeta se encontrara toda la implementacion del software, Back-end y Front-end, como las clases, 
 los metodos, los html, el codigo para correr el programa, etc.
 - Carpeta uml: Implementacion del diagrama UML
 
 ## Funcionalidad
 este software el cliente puede:
-- seleccionar una ciudad origen y destino
-- seleccionar una ciudad origen y a todos los ciudades destinos
+- seleccionar una ciudad origen y destino de los capitales del continente europeo
+- seleccionar una ciudad origen y a todos los ciudades destinos de los capitales del continente europeo
 - ver el camino de menor costo entre la ciudad origen y destino
 
 ## Diagrama UML

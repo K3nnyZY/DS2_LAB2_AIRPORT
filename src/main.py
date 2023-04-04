@@ -6,7 +6,7 @@ from flask import Flask, render_template, request
 import os
 from graph import Graph, Capital_Node
 
-grafo = Graph()
+grafo = Graph()     
 vuelos = pd.read_csv('data/data.csv')
 
 
@@ -34,31 +34,31 @@ for index, info in vuelos.iterrows():
 map = folium.Map(location=[54.5260, 15.2551],zoom_start=4)
 for index, location_info in vuelos.iterrows():
     folium.Marker([location_info["lat_st"], location_info["lng_st"]], popup=location_info["Origin"], 
-                  icon=folium.Icon(color="orange", icon="plane")).add_to(map)
+                  icon=folium.Icon(color="orange", icon="plane")).add_to(map)   
 
-# Guardamos el mapa en la carpeta requerida
+
 directory = r"src/static"
 Save = os.path.join(directory, "map.html")
 map.save(Save)
-#Servidor en Flask
+
 app = Flask(__name__)
 @app.route('/') 
-#Primera ejecución
+
 def index():
     return render_template('Inicio.html')
-#Para pasar a la página de los mapas
+
 @app.route('/continuar', methods=["GET", "POST"])
 def continuar():
     return render_template('App.html')
 @app.route('/datos', methods=["GET", "POST"])
-#Recolectar los datos
+
 def ciudades():
     ciudad1 = request.form['city-1']
     ciudad2 = request.form['city-2']
-    # Redibujar el mapa
+
     map_updater = MapUpdater(grafo)
     map_updater.update_map(ciudad1, ciudad2)
-    # Refrescar la pagina
+
     return render_template('App.html')
 if __name__ == '__main__':
     webbrowser.open("http://127.0.0.1:5000", 0)

@@ -1,94 +1,25 @@
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel ="stylesheet" href="{{url_for('static', filename='estilo2.css')}}">
-<title>Software</title>
-<!--Classes -->
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    dialog {
-        color: green;
-        font-size: 30px;
-        font-weight: bold;
-        font-style: italic;
-    }
-    body {
-        text-align: left;
-        font-family: 'candara';
-        color: rgb(230, 100, 100);
-        font-size: 120%;
-    }
-
-    .main-container{
-        width: 80%;
-        margin: auto;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .main-container .titlebar {
-        width: 100%;
-        
-    }
-
-    .main-container h1 {
-        text-align: center;
-        margin-bottom: 10px;
-        
-    }
-
-    .main-container iframe {
-        width: 70%;
-        border-radius: 10px;
-    }
-
-    .main-container .panel {
-        padding: 20px;
-        width: 30%;
-        left: 40%;
-    }
-
-    .panel #city-1,
-    .panel #city-2 {
-        width: 100%;
-        height: 30px;
-        line-height: 30px;
-        margin-bottom: 10px;
-        left: 40%;
-    }
-    .botton {
-        text-align: left;
-        font-family: 'candara';
-        color: rgb(207, 47, 100);
-        font-size: 120%;
-    }
-</style>
-
-<script>
-    export var city_1 = document.getElementById("city-1");
-    export var city_2 = document.getElementById("city-2");
-    
-</script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/estilos2.css">
+    <title>Software</title>
 </head>
 <body>
     <div class="main-container">
-        <div class="titlebar"><!--titulo-->
-            <img src="/static/titulo.png" />
+        <div class="map-container">
+            <!--Mapa-->
+            <iframe class="folium-map" src="{{url_for('static', filename = 'map.html')}}" title="description"></iframe>
         </div>
-        <!--Mapa-->
-        <iframe src="{{url_for('static', filename = 'map.html')}}" title="description" width="500" height="500" l></iframe>
         <aside class="panel">
             <!--Acción que realiza-->
             <form action="/datos" method="post">
                 <div class="lists">
                     <br> <nr></nr>    
                     <!--Ciudades de partida(lista)-->
-                    <img src="/static/partida.png" style= "width: 300px ;" />                
+                    <img src="/static/images/llegada.jpg" style= "width: 350px ; height: 200px;" />               
                     <select name="city-1" id="city-1" required>
                         <option value="">-</option>
                         <option value="LONDON">LONDON</option>
@@ -123,7 +54,7 @@
                         <option value="VALLETTA">VALLETTA</option>
                         <option value="NICOSIA">NICOSIA</option>
                         </select>
-                        <img src="/static/llegada.png" style= "width: 300px ;" />
+                        <img src="/static/images/destino.png" style= "width: 350px ; height: 200px;" />
                         <!--Ciudades de llegada-->
                         <select name="city-2" id="city-2" required>
                         <option value="">-</option>
@@ -162,15 +93,13 @@
                     </select>
                 </div>
                 <!--Botón para continuar-->
-                <button type="submit", id="script", class="botton", name="scriptbutton", value="Run script", onclick="exec('python Redraw.py');">Continuar</button>
-                <b>
-                    <br><br>-To see the names of the places, 
-                    click on each item.<br> 
-                    -If you want to see the weight of the edges,
-                    hover the mouse over each line.
-                </b> 
+                <button type="submit" id="script" class="botton" name="scriptbutton" value="Run script" onclick="exec('python Redraw.py');">Continuar</button>
+                <p class="instructions">
+                    <br>- Si quieres ver los nombres de los capitales presiona el marcador<br> 
+                    - Si quieres ver el costo minimo coloca el cursor encima de la linea.
+                </p>
             </form>
         </aside>
     </div>
 </body>
-</html>    
+</html>
