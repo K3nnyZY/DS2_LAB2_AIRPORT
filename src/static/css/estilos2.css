@@ -59,7 +59,7 @@ body {
 }
 
 select {
-    width: 100%;
+    width: 90%;
     height: 30px;
     line-height: 30px;
     margin-bottom: 10px;
@@ -88,9 +88,11 @@ select {
 .instructions {
     font-size: 20px;
     margin-top: 14px;
+    color: rgb(255, 255, 255);
 }
 
 .folium-map {
     width: 800px; /* Ajusta el ancho del mapa */
     height: 600px; /* Ajusta la altura del mapa */
 }
+

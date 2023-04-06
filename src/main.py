@@ -60,6 +60,7 @@ def ciudades():
     map_updater.update_map(ciudad1, ciudad2)
 
     return render_template('App.html')
+
 if __name__ == '__main__':
-    webbrowser.open("http://127.0.0.1:5000", 0)
-    app.run(debug=True)
+    webbrowser.open("http://127.0.0.1:5005", 0)
+    app.run(debug=True, port=5005)  
