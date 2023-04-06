@@ -1,4 +1,4 @@
-# Vuelos Capitales Europeas
+# Vuelos Capitales Europeas (Euroroutes)
 <img src = "src/static/images/fondo.jpg">
 
 ## Integrantes
@@ -7,6 +7,7 @@
 - Tomas Cervera
 
 ## Informacion
+### Euroroutes
 Este es un aplicativo web que permita a un usuario saber las distintas rutas de vuelos a los capitales 
 del continente europeo, donde dada una distribución de vuelos (al menos lugar de inicio y de destino), 
 y la distancia que hay entre ellos encontrar el camino de menor costo (distancia entre ellos) para 
