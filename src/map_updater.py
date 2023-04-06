@@ -82,15 +82,14 @@ class MapUpdater:
         - finish: str que indica la capital de la ciudad de destino de los vuelos a representar en el mapa,
         o la cadena "TODOS" para representar todos los vuelos que parten de la ciudad de origen.
         """
-        map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
+        if start == finish or not start or not finish:
+            return
 
         if not self.node_exists(start) or (finish != "TODOS" and not self.node_exists(finish)):
-            directory = r"src/static"
-            Save = os.path.join(directory, "map.html")
-            map.save(Save)
             return
 
         vuelos = pd.read_csv('data/data.csv')
+        map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
 
         for _, location_info in vuelos.iterrows():
             self.add_marker(map, location_info, "orange", "plane")
