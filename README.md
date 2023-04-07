@@ -43,7 +43,7 @@ pip3 install pandas
 pip3 install flask
 pip3 install folium
 ```
-5. Ejecutar el codigo.
+5. Ejecutar el codigo, en el archivo "main.py".
 
 ## Referencias
 - https://openflights.org/data.html#route
