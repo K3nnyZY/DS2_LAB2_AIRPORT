@@ -13,6 +13,8 @@ class Graph {
     -country_list: List[str]
     +dijkstra_shortest_path(start: str, finish: str): List[Capital_Node]
     +get_vertex(capital: str): Capital_Node
+    +remove_vertex(capital: str, connections: List[Capital_Node], costs: List[float]): None
+    +restore_vertex_connections(capital: str, connections: List[Capital_Node], costs: List[float]): None
     -_reconstruct_path(previous_nodes: Dict[Capital_Node, Capital_Node], start: str, finish: str): List[Capital_Node]
 }
 
@@ -22,6 +24,9 @@ class MapUpdater {
     +add_marker(map: folium.Map, location_info: dict, color: str, icon: str): None
     +add_polyline(map: folium.Map, node1: Capital_Node, node2: Capital_Node, color: str, weight: int, tooltip: str): None
     +update_map(start: str, finish: str): None
+    +remove_vertex(capital: str): None
+    +restore_vertex(capital: str): None
+    +update_map_with_removed_vertex(): None
 }
 
 Capital_Node "1" -- "0..*" Graph: contains

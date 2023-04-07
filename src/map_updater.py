@@ -18,6 +18,8 @@ class MapUpdater:
         - grafo: objeto Grafo que contiene información sobre los nodos del grafo y sus conexiones.
         """
         self.grafo = grafo
+        self.removed_vertices = []
+        self.removed_vertex_data = {}
 
 
     def node_exists(self, node_data):
@@ -92,15 +94,16 @@ class MapUpdater:
         map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
 
         for _, location_info in vuelos.iterrows():
-            self.add_marker(map, location_info, "orange", "plane")
-            if location_info["Origin"] == start:
-                self.add_marker(map, location_info, "green", "plane")
-            elif finish == "TODOS":
-                self.add_marker(map, location_info, "red", "plane")
-            elif location_info["Origin"] == finish:
-                self.add_marker(map, location_info, "red", "plane")
-            else:
+            if self.node_exists(location_info["Origin"]):
                 self.add_marker(map, location_info, "orange", "plane")
+                if location_info["Origin"] == start:
+                    self.add_marker(map, location_info, "green", "plane")
+                elif finish == "TODOS":
+                    self.add_marker(map, location_info, "red", "plane")
+                elif location_info["Origin"] == finish:
+                    self.add_marker(map, location_info, "red", "plane")
+                else:
+                    self.add_marker(map, location_info, "orange", "plane")
 
         if finish == "TODOS":
             for node in self.grafo.vertex_list:
@@ -118,6 +121,84 @@ class MapUpdater:
                 if node2 in node1.connections:
                     weight = node1.cost[node1.connections.index(node2)]
                     self.add_polyline(map, node1, node2, "blue", 3, str(weight))
+
+        directory = r"src/static"
+        Save = os.path.join(directory, "map.html")
+        map.save(Save)
+
+
+    def remove_vertex(self, capital: str):
+        """
+        Método que elimina un vértice del grafo y actualiza el mapa.
+
+        Args:
+        - capital: str que indica la capital de la ciudad a eliminar del grafo.
+        """
+        # Save removed vertex before removing it from the graph
+        removed_node = self.grafo.get_vertex(capital)
+        if removed_node is not None:
+            self.removed_vertices.append(removed_node)
+
+            # Save and remove connections and costs
+            connections = removed_node.connections[:]
+            costs = removed_node.cost[:]
+            removed_node.connections = []
+            removed_node.cost = []
+
+            # Store connections and costs in a dictionary
+            self.removed_vertex_data[capital] = {
+                "connections": connections,
+                "costs": costs
+            }
+        # Remove vertex from the graph
+        self.grafo.remove_vertex(capital)
+        # Update the map
+        self.update_map_with_removed_vertex()
+
+
+    def restore_vertex(self, capital: str):
+        """
+        Restaura un vértice previamente eliminado del grafo y actualiza el mapa.
+
+        Args:
+            capital (str): La capital de la ciudad a restaurar.
+
+        Returns:
+            None
+        """
+        # Find and restore the removed vertex
+        removed_node = next((node for node in self.removed_vertices if node.capital == capital), None)
+        if removed_node is not None:
+            self.grafo.vertex_list.append(removed_node)
+            self.removed_vertices.remove(removed_node)
+
+            # Restore connections and costs
+            removed_vertex_data = self.removed_vertex_data.get(capital)
+            if removed_vertex_data:
+                connections = removed_vertex_data["connections"]
+                costs = removed_vertex_data["costs"]
+                self.grafo.restore_vertex_connections(capital, connections, costs)
+                del self.removed_vertex_data[capital]
+        # Update the map
+        self.update_map_with_removed_vertex()
+
+
+    def update_map_with_removed_vertex(self):
+        """
+        Actualiza el mapa de Folium con los marcadores correspondientes después de que se haya eliminado un vértice del grafo.
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
+        vuelos = pd.read_csv('data/data.csv')
+        map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
+
+        for _, location_info in vuelos.iterrows():
+            if self.node_exists(location_info["Origin"]):
+                self.add_marker(map, location_info, "orange", "plane")
 
         directory = r"src/static"
         Save = os.path.join(directory, "map.html")

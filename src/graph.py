@@ -38,7 +38,7 @@ class Graph:
 
             for neighbor in neighbors:
                 tentative_cost = shortest_path[current_min_node] + current_min_node.cost[current_min_node.connections.index(neighbor)]
-                if tentative_cost < shortest_path[neighbor]:
+                if tentative_cost < shortest_path.get(neighbor, float('inf')):
                     shortest_path[neighbor] = tentative_cost
                     previous_nodes[neighbor] = current_min_node
 
@@ -90,7 +90,64 @@ class Graph:
         return shortest_path_list
     
 
+    def remove_vertex(self, capital: str) -> None:
+        """
+        Elimina un vértice del grafo.
+
+        Args:
+            capital (str): La capital de la ciudad a eliminar del grafo.
+
+        Returns:
+            None
+
+        Raises:
+            ValueError: Si no se encuentra la capital en el grafo.
+        """
+        vertex_to_remove = self.get_vertex(capital)
+        if vertex_to_remove is None:
+            raise ValueError(f"Capital '{capital}' not found in graph.")
+
+        # Remove connections to the vertex in other vertices
+        for vertex in self.vertex_list:
+            if vertex_to_remove in vertex.connections:
+                connection_index = vertex.connections.index(vertex_to_remove)
+                vertex.connections.pop(connection_index)
+                vertex.cost.pop(connection_index)
+
+        # Remove the vertex from vertex_list
+        self.vertex_list.remove(vertex_to_remove)
+
+
+    def restore_vertex_connections(self, capital: str, connections: List[Capital_Node], costs: List[float]) -> None:
+        """
+        Restaura las conexiones de un vértice eliminado previamente.
+
+        Args:
+            capital (str): La capital de la ciudad del vértice al que se restaurarán las conexiones.
+            connections (List[Capital_Node]): La lista de nodos a los que el vértice restaurado estará conectado.
+            costs (List[float]): La lista de costos de las conexiones.
+
+        Returns:
+            None
+
+        Raises:
+            ValueError: Si no se encuentra la capital en el grafo.
+        """
+        vertex = self.get_vertex(capital)
+        if vertex is None:
+            raise ValueError(f"Capital '{capital}' not found in graph.")
+
+        vertex.connections = connections
+        vertex.cost = costs
+    
+
     def __str__(self):
+        """
+        Devuelve una representación en cadena del grafo.
+
+        Returns:
+            str: La representación en cadena del grafo.
+        """
         res = ""
         for vertex in self.vertex_list:
             res += f"\nCapital origen:\n{vertex.capital} (Lat: {vertex.lat}, Long: {vertex.long})\n"
