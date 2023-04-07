@@ -28,7 +28,7 @@ este software el cliente puede:
 - eliminar y recuperar un vertice (capitales europeos).
 
 ## Diagrama UML
-<img src = "uml/UML_diagram.png">
+<img src = "uml/UML_Diagram.png">
 
 ## Como ejecutar
 1. En el repositorio, presionar en la parte de code, para copiar el HTTPS.
