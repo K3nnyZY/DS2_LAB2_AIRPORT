@@ -60,6 +60,20 @@ def modify_vertex():
 
     return render_template('App.html')
 
+@app.route('/traversal', methods=["POST"])
+def traversal():
+    algorithm = request.form['algorithm']
+    start_city = request.form['start-city']
+
+    if algorithm == 'BFS':
+        map_updater.update_map_with_traversal(start_city, 'bfs')
+    elif algorithm == 'DFS':
+        map_updater.update_map_with_traversal(start_city, 'dfs')
+    else:
+        return "Algoritmo desconocido", 400
+
+    return render_template('App.html')
+
 if __name__ == '__main__':
     webbrowser.open("http://127.0.0.1:5005", 0)
     app.run(debug=True, port=5005)

@@ -203,3 +203,42 @@ class MapUpdater:
         directory = r"src/static"
         Save = os.path.join(directory, "map.html")
         map.save(Save)
+
+
+    def update_map_with_traversal(self, start: str, traversal_type: str = "bfs"):
+        """
+        Método que actualiza el mapa de Folium con los marcadores y líneas correspondientes utilizando BFS o DFS.
+
+        Args:
+        - start: str que indica la capital de la ciudad de origen de los vuelos a representar en el mapa.
+        - traversal_type: str que indica el tipo de recorrido a realizar ("bfs" o "dfs").
+        """
+        if not start or not self.node_exists(start):
+            return
+
+        if traversal_type == "bfs":
+            traversal_path = self.grafo.bfs(start)
+        elif traversal_type == "dfs":
+            traversal_path = self.grafo.dfs(start)
+        else:
+            return
+
+        vuelos = pd.read_csv('data/data.csv')
+        map = folium.Map(location=[54.5260, 15.2551], zoom_start=4)
+
+        for _, location_info in vuelos.iterrows():
+            if self.node_exists(location_info["Origin"]):
+                self.add_marker(map, location_info, "orange", "plane")
+                if location_info["Origin"] == start:
+                    self.add_marker(map, location_info, "green", "plane")
+
+        for i in range(len(traversal_path) - 1):
+            node1, node2 = traversal_path[i], traversal_path[i+1]
+            if node2 in node1.connections:
+                weight = node1.cost[node1.connections.index(node2)]
+                self.add_polyline(map, node1, node2, "blue", 3, str(weight))
+                
+        directory = r"src/static"
+        Save = os.path.join(directory, "map.html")
+        map.save(Save)
+

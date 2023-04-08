@@ -116,11 +116,67 @@
                 </div>
                 <!--Botón para continuar-->
                 <button type="submit" id="script" class="botton" name="scriptbutton" value="Run script" onclick="exec('python Redraw.py');">Continuar</button>
-                <p class="instructions">
+                </form>
+                <!--dfs y bfs-->
+                <form action="/traversal" method="POST">
+                    <br><br>
+                    <p id="remove-text" style="color: white;">ELIGE UN RECORRIDO:</p>
+                    <!--Ciudades para DFS y BFS-->
+                    <select name="start-city" id="start-city" required>
+                        <option value="">-</option>
+                        <option value="TIRANA">TIRANA</option>
+                        <option value="VIENNA">VIENNA</option>
+                        <option value="SARAJEVO">SARAJEVO</option>
+                        <option value="BRUSSELS">BRUSSELS</option>
+                        <option value="SOFIA">SOFIA</option>
+                        <option value="MINSK">MINSK</option>
+                        <option value="BERN">BERN</option>
+                        <option value="PRAGUE">PRAGUE</option>
+                        <option value="BERLIN">BERLIN</option>
+                        <option value="COPENHAGEN">COPENHAGEN</option>
+                        <option value="TALLINN">TALLINN</option>
+                        <option value="MADRID">MADRID</option>
+                        <option value="HELSINKI">HELSINKI</option>
+                        <option value="PARIS">PARIS</option>
+                        <option value="LONDON">LONDON</option>
+                        <option value="ATHENS">ATHENS</option>
+                        <option value="ZAGREB">ZAGREB</option>
+                        <option value="BUDAPEST">BUDAPEST</option>
+                        <option value="DUBLIN">DUBLIN</option>
+                        <option value="REYKJAVIK">REYKJAVIK</option>
+                        <option value="ROME">ROME</option>
+                        <option value="VADUZ">VADUZ</option>
+                        <option value="VILNIUS">VILNIUS</option>
+                        <option value="LUXEMBOURG">LUXEMBOURG</option>
+                        <option value="RIGA">RIGA</option>
+                        <option value="MONACO">MONACO</option>
+                        <option value="CHISINAU">CHISINAU</option>
+                        <option value="PODGORICA">PODGORICA</option>
+                        <option value="SKOPJE">SKOPJE</option>
+                        <option value="VALLETTA">VALLETTA</option>
+                        <option value="AMSTERDAM">AMSTERDAM</option>
+                        <option value="OSLO">OSLO</option>
+                        <option value="WARSAW">WARSAW</option>
+                        <option value="LISBON">LISBON</option>
+                        <option value="BUCHAREST">BUCHAREST</option>
+                        <option value="BELGRADE">BELGRADE</option>
+                        <option value="MOSCOW">MOSCOW</option>
+                        <option value="STOCKHOLM">STOCKHOLM</option>
+                        <option value="LJUBLJANA">LJUBLJANA</option>
+                        <option value="BRATISLAVA">BRATISLAVA</option>
+                        <option value="SAN MARINO">SAN MARINO</option>
+                        <option value="KIEV">KIEV</option>
+                    </select>
+                    <!--Botón para DFS-->
+                    <button type="submit" id="algorithm" class="botton" name="algorithm" value="DFS" onclick="exec('python Redraw.py', 'DFS');">DFS</button>
+                    <!--Botón para BFS-->
+                    <button type="submit" id="algorithm" class="botton" name="algorithm" value="BFS" onclick="exec('python Redraw.py', 'BFS');">BFS</button>
+                    <p class="instructions">
                     <br>- Si quieres ver los nombres de los capitales europeos presiona el marcador<br> 
                     - Si quieres ver el costo minimo o la distancia coloca el cursor encima de la linea.
                 </p>
             </form>
+
             <form action="/modify_vertex" method="POST">
                 <br><br> 
                 <p id="remove-text" style="color: white;">CAPITAL A MODIFICAR:</p>

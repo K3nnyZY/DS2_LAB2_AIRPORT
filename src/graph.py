@@ -141,6 +141,62 @@ class Graph:
         vertex.cost = costs
     
 
+    def bfs(self, start: str) -> List[Capital_Node]:
+        """
+        Método que realiza un recorrido en anchura (BFS) en el grafo.
+
+        Args:
+        - start: str que indica la capital de la ciudad de origen.
+
+        Returns:
+        - Una lista de objetos Capital_Node que representa el recorrido BFS.
+        """
+        start_node = self.get_vertex(start)
+        if start_node is None:
+            return []
+
+        visited_nodes = set()
+        bfs_queue = [start_node]
+        bfs_path = []
+
+        while bfs_queue:
+            current_node = bfs_queue.pop(0)
+            if current_node not in visited_nodes:
+                visited_nodes.add(current_node)
+                bfs_path.append(current_node)
+                bfs_queue.extend(neighbor for neighbor in current_node.connections if neighbor not in visited_nodes)
+
+        return bfs_path
+
+
+    def dfs(self, start: str) -> List[Capital_Node]:
+        """
+        Método que realiza un recorrido en profundidad (DFS) en el grafo.
+
+        Args:
+        - start: str que indica la capital de la ciudad de origen.
+
+        Returns:
+        - Una lista de objetos Capital_Node que representa el recorrido DFS.
+        """
+        start_node = self.get_vertex(start)
+        if start_node is None:
+            return []
+
+        visited_nodes = set()
+        dfs_stack = [start_node]
+        dfs_path = []
+
+        while dfs_stack:
+            current_node = dfs_stack.pop()
+            if current_node not in visited_nodes:
+                visited_nodes.add(current_node)
+                dfs_path.append(current_node)
+                dfs_stack.extend(neighbor for neighbor in current_node.connections if neighbor not in visited_nodes)
+
+        return dfs_path
+
+
     def __str__(self):
         """
         Devuelve una representación en cadena del grafo.

@@ -15,6 +15,8 @@ class Graph {
     +get_vertex(capital: str): Capital_Node
     +remove_vertex(capital: str, connections: List[Capital_Node], costs: List[float]): None
     +restore_vertex_connections(capital: str, connections: List[Capital_Node], costs: List[float]): None
+    +bfs(start: str): List[Capital_Node]
+    +dfs(start: str): List[Capital_Node]
     -_reconstruct_path(previous_nodes: Dict[Capital_Node, Capital_Node], start: str, finish: str): List[Capital_Node]
 }
 
@@ -27,6 +29,7 @@ class MapUpdater {
     +remove_vertex(capital: str): None
     +restore_vertex(capital: str): None
     +update_map_with_removed_vertex(): None
+    +update_map_with_traversal(start: str, traversal_type: str): None
 }
 
 Capital_Node "1" -- "0..*" Graph: contains
