@@ -205,7 +205,7 @@ class MapUpdater:
         map.save(Save)
 
 
-    def update_map_with_traversal(self, start: str, traversal_type: str = "bfs"):
+    def update_map_with_traversal(self, start: str, traversal_type: str):
         """
         Método que actualiza el mapa de Folium con los marcadores y líneas correspondientes utilizando BFS o DFS.
 
@@ -233,11 +233,21 @@ class MapUpdater:
                     self.add_marker(map, location_info, "green", "plane")
 
         for i in range(len(traversal_path) - 1):
-            node1, node2 = traversal_path[i], traversal_path[i+1]
-            if node2 in node1.connections:
-                weight = node1.cost[node1.connections.index(node2)]
-                self.add_polyline(map, node1, node2, "blue", 3, str(weight))
-                
+            node1, node2 = traversal_path[i], traversal_path[i + 1]
+            if node1 not in self.removed_vertices and node2 not in self.removed_vertices:
+                if node2 in node1.connections:
+                    weight = node1.cost[node1.connections.index(node2)]
+                    self.add_polyline(map, node1, node2, "blue", 3, str(weight))
+                else:
+                    # If node2 is not an adjacent node of node1, find a path between them
+                    intermediate_path = self.grafo.dijkstra_shortest_path(node1.capital, node2.capital)
+                    for j in range(len(intermediate_path) - 1):
+                        int_node1, int_node2 = intermediate_path[j], intermediate_path[j + 1]
+                        if int_node1 not in self.removed_vertices and int_node2 not in self.removed_vertices:
+                            if int_node2 in int_node1.connections:
+                                weight = int_node1.cost[int_node1.connections.index(int_node2)]
+                                self.add_polyline(map, int_node1, int_node2, "blue", 3, str(weight))
+                    
         directory = r"src/static"
         Save = os.path.join(directory, "map.html")
         map.save(Save)

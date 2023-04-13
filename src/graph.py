@@ -159,11 +159,13 @@ class Graph:
         bfs_queue = [start_node]
         bfs_path = []
 
+        print("BFS Traversal:")
         while bfs_queue:
             current_node = bfs_queue.pop(0)
             if current_node not in visited_nodes:
                 visited_nodes.add(current_node)
                 bfs_path.append(current_node)
+                print(f"{len(bfs_path)}. {current_node.capital}")
                 bfs_queue.extend(neighbor for neighbor in current_node.connections if neighbor not in visited_nodes)
 
         return bfs_path
@@ -187,11 +189,13 @@ class Graph:
         dfs_stack = [start_node]
         dfs_path = []
 
+        print("DFS Traversal:")
         while dfs_stack:
             current_node = dfs_stack.pop()
             if current_node not in visited_nodes:
                 visited_nodes.add(current_node)
                 dfs_path.append(current_node)
+                print(f"{len(dfs_path)}. {current_node.capital}")
                 dfs_stack.extend(neighbor for neighbor in current_node.connections if neighbor not in visited_nodes)
 
         return dfs_path
