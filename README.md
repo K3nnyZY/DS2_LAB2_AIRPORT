@@ -39,9 +39,7 @@ git clone https://github.com/K3nnyZY/Data_Strucutures_Lab2.git
 ```
 4. Instalar las librerias utilizadas:
 ```
-pip3 install pandas
-pip3 install flask
-pip3 install folium
+pip3 install -r requirements.txt
 ```
 5. Ejecutar el codigo, en el archivo "main.py".
 
